@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorelle — Premium Aloe Vera Raw Materials</title>
+  <meta name="description" content="Premium Aloe Vera raw materials for cosmetics, nutraceuticals and pharmaceuticals. Produced in Brazil, delivered worldwide.">
+  <link rel="stylesheet" href="sorelle.css">
+  <link rel="icon" type="image/png" href="logo-sorelle-def.png">
+  <link rel="apple-touch-icon" href="logo-sorelle-def.png">
+  <style>
+    /* Page-specific overrides */
+    body { background: #fff; }
+    /* NOTE: No z-index on main — canvas (z-index:2, fixed) must be able to
+       overlay the scroll-animation section. Subsequent sections are in normal
+       flow; canvas is opacity:0 when not in scroll section, so they look fine. */
+    .scroll-animation { background: #FFFFFF; }
+  </style>
+</head>
+<body>
+
+<!-- ========== SCROLL PROGRESS ========== -->
+<div id="scrollProgress"></div>
+
+<!-- ========== HERO CANVAS (fixed) ========== -->
+<canvas id="heroCanvas" class="scroll-canvas"></canvas>
+
+<!-- ========== ANNOTATION CARDS OVERLAY (fixed) ========== -->
+<div id="heroOverlay" class="scroll-canvas-overlay">
+  <div class="annotation-card" data-show="0.2" data-hide="0.4">
+    <div class="card-number">01</div>
+    <div class="card-title">380 Hectares</div>
+    <div class="card-desc">Cultivated in Pilar, Bahia — Brazil</div>
+  </div>
+  <div class="annotation-card card-right" data-show="0.48" data-hide="0.67">
+    <div class="card-number">02</div>
+    <div class="card-title">100% Traceable</div>
+    <div class="card-desc">From seed to certified ingredient</div>
+  </div>
+  <div class="annotation-card" data-show="0.74" data-hide="0.94">
+    <div class="card-number">03</div>
+    <div class="card-title">Farm to Formula</div>
+    <div class="card-desc">Vertical integration, zero intermediaries</div>
+  </div>
+</div>
+
+<!-- ========== LOADER ========== -->
+<div id="loader">
+  <div class="loader-content">
+    <div class="loader-logo">
+      <img src="sorelle-logo.png" alt="Sorelle">
+      <span class="loader-logo-name">Sorelle</span>
+    </div>
+    <p class="loader-text" data-i18n="loader.text">Loading</p>
+    <div class="loader-bar-track">
+      <div class="loader-bar-fill" id="loaderBar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== NAVBAR ========== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo-sorelle-def.png" alt="Sorelle" style="height:40px;width:auto;">
+    </a>
+    <div class="nav-links">
+      <a href="index.html" data-page="index.html" data-i18n="nav.home">Home</a>
+      <a href="about.html" data-page="about.html" data-i18n="nav.about">About</a>
+      <a href="products.html" data-page="products.html" data-i18n="nav.products">Products</a>
+      <a href="contact.html" data-page="contact.html" data-i18n="nav.contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div class="nav-lang">
+        <button class="lang-btn" data-lang="EN">EN</button>
+        <button class="lang-btn" data-lang="IT">IT</button>
+        <button class="lang-btn" data-lang="PT">PT</button>
+      </div>
+      <a href="contact.html" class="btn nav-cta" data-i18n="nav.cta">Request a Sample</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Drawer -->
+<div class="nav-mobile-drawer">
+  <button class="nav-mobile-close" aria-label="Close">✕</button>
+  <a href="index.html" data-i18n="nav.home">Home</a>
+  <a href="about.html" data-i18n="nav.about">About</a>
+  <a href="products.html" data-i18n="nav.products">Products</a>
+  <a href="contact.html" data-i18n="nav.contact">Contact</a>
+  <a href="contact.html" class="nav-mobile-cta" data-i18n="nav.cta">Request a Sample</a>
+  <div class="nav-mobile-lang">
+    <button class="lang-btn" data-lang="EN">EN</button>
+    <button class="lang-btn" data-lang="IT">IT</button>
+    <button class="lang-btn" data-lang="PT">PT</button>
+  </div>
+</div>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main>
+
+  <!-- ===== 2. HERO SCROLL ANIMATION SPACER (400vh) ===== -->
+  <section class="scroll-animation" id="heroSection">
+    <!-- Scroll hint anchored near bottom of first viewport -->
+    <div style="position:sticky; top:0; height:100vh; display:flex; align-items:flex-end; justify-content:center; padding-bottom:40px; pointer-events:none; z-index:10;">
+      <div class="scroll-hint" id="scrollHint">
+        <span data-i18n="hero.scroll">Scroll to explore</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. BRAND INTRO ===== -->
+  <section class="brand-intro">
+    <div class="brand-intro-inner" style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:80px; align-items:center;">
+      <div class="reveal">
+        <span class="section-label">Sorelle</span>
+        <h2 class="brand-headline" data-i18n="brand.headline">Premium Aloe Vera Raw Materials for Global Wellness</h2>
+        <p class="brand-subheadline mt-16" data-i18n="brand.subheadline">For Cosmetics · Nutraceuticals · Pharmaceuticals · and more</p>
+      </div>
+      <div class="brand-numbers reveal">
+        <div class="brand-num-item">
+          <span class="brand-num-value">380</span>
+          <span class="brand-num-label" data-i18n="brand.num1.label">Hectares Cultivated</span>
+        </div>
+        <div class="brand-num-item">
+          <span class="brand-num-value">25+</span>
+          <span class="brand-num-label" data-i18n="brand.num2.label">Countries Served</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. ABOUT TEASER ===== -->
+  <section style="background:#fff; padding:100px 40px;">
+    <div class="two-col" style="max-width:1200px; margin:0 auto;">
+      <div class="reveal">
+        <span class="section-label" data-i18n="sections.about">About Us</span>
+        <h2 class="section-title" data-i18n="about.teaser.heading">Who We Are</h2>
+        <p class="mt-24" data-i18n="about.teaser.text">Sorelle is a Brazilian company specialized in the production and distribution of Aloe Vera raw materials...</p>
+        <a href="about.html" class="btn btn-secondary mt-32" data-i18n="about.teaser.cta">Discover Our Story →</a>
+      </div>
+      <div class="reveal" style="border-radius:16px; overflow:hidden; min-height:320px;">
+        <img src="plantation-photo.JPG" alt="Sorelle plantation in Bahia, Brazil"
+             style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. VIDEO MONTAGGIO ===== -->
+  <section class="video-section">
+    <div style="max-width:960px; margin:0 auto;">
+      <span class="section-label" style="color:var(--accent-light); text-align:center; display:block; margin-bottom:12px;">Sorelle</span>
+      <h2 data-i18n="video.title">See How We Work</h2>
+      <div class="video-wrapper">
+        <iframe
+          src="https://player.vimeo.com/video/1006507168?badge=0&autopause=0&autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+          allowfullscreen
+          style="width:100%; height:100%; object-fit:cover; display:block;"
+          title="Sorelle — Aloe Vera">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6. PRODOTTI ===== -->
+  <section style="background:#fff; padding:100px 40px;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div class="section-center reveal">
+        <span class="section-label" data-i18n="sections.products">Products</span>
+        <h2 class="section-title" data-i18n="products.title">Our Products</h2>
+        <p class="section-subtitle" style="margin:0 auto;" data-i18n="products.subtitle">From field to formulation — four core ingredients, endless applications.</p>
+      </div>
+      <div class="products-grid mt-48">
+        <a href="products.html" class="product-card reveal">
+          <div class="product-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><path d="M176,232H80a8,8,0,0,1-8-8V120a8,8,0,0,1,8-8h96a8,8,0,0,1,8,8V224A8,8,0,0,1,176,232Z"/><path d="M96,112V80a32,32,0,0,1,64,0v32"/><line x1="72" y1="152" x2="184" y2="152"/></svg></div>
+          <div class="product-name" data-i18n="products.gel">Aloe Vera Gel</div>
+          <p class="product-desc" data-i18n="products.gel.desc">Available in 1:1, 10:1 and 20:1 concentration ratios. Standard and preserved formulations.</p>
+          <div class="product-arrow">→</div>
+        </a>
+        <a href="products.html" class="product-card reveal delay-1">
+          <div class="product-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><path d="M40,216C88,168,168,120,216,40"/><path d="M40,216c56-48,104-128,176-176"/><path d="M40,216a144,144,0,0,1,96-128"/></svg></div>
+          <div class="product-name" data-i18n="products.pulp">Aloe Vera Pulp</div>
+          <p class="product-desc" data-i18n="products.pulp.desc">Fresh inner-leaf fillet in 1:1 raw form or 3×5mm cube. Ready for food and cosmetics.</p>
+          <div class="product-arrow">→</div>
+        </a>
+        <a href="products.html" class="product-card reveal delay-2">
+          <div class="product-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><circle cx="80" cy="128" r="32"/><circle cx="176" cy="80" r="32"/><circle cx="176" cy="176" r="32"/></svg></div>
+          <div class="product-name" data-i18n="products.powder">Aloe Vera Powder</div>
+          <p class="product-desc" data-i18n="products.powder.desc">Freeze-dried powder with concentration ratios from 50:1 up to 1000:1. Customizable acemannan levels.</p>
+          <div class="product-arrow">→</div>
+        </a>
+        <a href="products.html" class="product-card reveal delay-3">
+          <div class="product-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><path d="M96,32 L96,168 Q96,212 128,212 Q160,212 160,168 L160,32"/><line x1="80" y1="32" x2="176" y2="32"/><line x1="96" y1="152" x2="160" y2="152"/></svg></div>
+          <div class="product-name" data-i18n="products.extract">Aloe Vera Extract</div>
+          <p class="product-desc" data-i18n="products.extract.desc">Oil-based extract ideal for emulsions and cosmetic formulations.</p>
+          <div class="product-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. WHY CHOOSE US ===== -->
+  <section style="background:var(--bg-cream); padding:100px 40px;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div class="reveal">
+        <span class="section-label" data-i18n="sections.whyus">Why Choose Us</span>
+        <h2 class="section-title" data-i18n="whyus.title">Why Choose Sorelle</h2>
+      </div>
+      <div class="pillars-grid mt-48">
+        <div class="pillar reveal">
+          <div class="pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><line x1="128" y1="224" x2="128" y2="112"/><path d="M128,176 Q128,112 64,88"/><path d="M128,136 Q128,64 200,48"/></svg></div>
+          <h3 data-i18n="whyus.p1.title">Full Vertical Integration</h3>
+          <p data-i18n="whyus.p1.text">From cultivation to supply — every step controlled. Consistency, traceability, zero additives.</p>
+        </div>
+        <div class="pillar reveal delay-1">
+          <div class="pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><path d="M96,40 L96,160 L48,224 Q40,236 52,236 L204,236 Q216,236 208,224 L160,160 L160,40Z"/><line x1="80" y1="40" x2="176" y2="40"/><line x1="96" y1="152" x2="160" y2="152"/></svg></div>
+          <h3 data-i18n="whyus.p2.title">Scientific Rigor</h3>
+          <p data-i18n="whyus.p2.text">Joint R&amp;D with Aracne Biotech (University of Salerno). Clinical trials and patent development underway.</p>
+        </div>
+        <div class="pillar reveal delay-2">
+          <div class="pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><rect x="48" y="56" width="160" height="176" rx="8"/><path d="M96,56 L96,40 Q96,24 128,24 Q160,24 160,40 L160,56"/><line x1="80" y1="112" x2="176" y2="112"/><line x1="80" y1="144" x2="176" y2="144"/><line x1="80" y1="176" x2="136" y2="176"/></svg></div>
+          <h3 data-i18n="whyus.p3.title">Regulatory Readiness</h3>
+          <p data-i18n="whyus.p3.text">COA, SDS, and product specs provided per EU and FDA guidelines. Complete export documentation available.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 8. STATS COUNT-UP ===== -->
+  <section id="statsSection" class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item" data-countup data-target="380" data-suffix="ha">
+        <span class="stat-number">380ha</span>
+        <span class="stat-label" data-i18n="numbers.ha.label">Cultivated Area</span>
+      </div>
+      <div class="stat-item" data-countup data-target="25" data-suffix="+">
+        <span class="stat-number">25+</span>
+        <span class="stat-label" data-i18n="numbers.countries.label">Countries Served</span>
+      </div>
+      <div class="stat-item" data-countup data-target="99.6" data-suffix="%">
+        <span class="stat-number">99.6%</span>
+        <span class="stat-label" data-i18n="numbers.delivery.label">On-Time Delivery</span>
+      </div>
+      <div class="stat-item" data-countup data-target="40" data-suffix="%">
+        <span class="stat-number">40%</span>
+        <span class="stat-label" data-i18n="numbers.growth.label">Quarterly Growth</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 9. CERTIFICATIONS ===== -->
+  <section style="background:#fff; padding:100px 40px;">
+    <div style="max-width:1000px; margin:0 auto; text-align:center;">
+      <span class="section-label" data-i18n="sections.certifications">Certifications</span>
+      <h2 class="section-title reveal" data-i18n="cert.title">Certifications &amp; Quality Assurance</h2>
+      <div class="cert-logos reveal">
+        <div class="cert-badge"><!-- INSERIRE LOGO CERTIFICAZIONE -->USDA Organic</div>
+        <div class="cert-badge"><!-- INSERIRE LOGO CERTIFICAZIONE -->EcoCert</div>
+        <div class="cert-badge"><!-- INSERIRE LOGO CERTIFICAZIONE -->EU Organic</div>
+        <div class="cert-badge"><!-- INSERIRE LOGO CERTIFICAZIONE -->Primus GFS</div>
+      </div>
+      <p class="reveal" style="max-width:640px; margin:0 auto;" data-i18n="cert.text">Quality testing conducted both in-house and by third-party laboratories. Lot-level traceability and comprehensive technical documentation provided.</p>
+    </div>
+  </section>
+
+  <!-- ===== 10. CTA FINALE ===== -->
+  <section class="cta-section">
+    <div style="position:relative; z-index:1;">
+      <div class="orb orb-green" style="width:500px;height:500px;top:-200px;right:-100px;"></div>
+      <span class="section-label">Sorelle</span>
+      <h2 data-i18n="cta.headline">Ready to Elevate Your Formulation?</h2>
+      <p data-i18n="cta.subtext">Request a free sample and our technical team will contact you within 24 hours.</p>
+      <a href="contact.html" class="btn btn-primary" data-i18n="cta.button">Request a Sample</a>
+    </div>
+  </section>
+
+  <!-- ===== 11. FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="sorelle-logo.png" alt="Sorelle">
+            <span class="footer-logo-name">Sorelle</span>
+          </div>
+          <p class="footer-tagline">Premium Aloe Vera Raw Materials<br>Bahia, Brazil → World</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Navigation</h4>
+          <div class="footer-links-grid">
+            <a href="index.html" data-i18n="nav.home">Home</a>
+            <a href="about.html" data-i18n="nav.about">About</a>
+            <a href="products.html" data-i18n="nav.products">Products</a>
+            <a href="contact.html" data-i18n="nav.contact">Contact</a>
+          </div>
+        </div>
+        <div class="footer-right">
+          <h4>Certifications</h4>
+          <div class="footer-cert-badges">
+            <span class="footer-cert-badge">USDA Organic</span>
+            <span class="footer-cert-badge">EcoCert</span>
+            <span class="footer-cert-badge">EU Organic</span>
+            <span class="footer-cert-badge">Primus GFS</span>
+          </div>
+          <div class="footer-lang">
+            <button class="lang-btn" data-lang="EN">EN</button>
+            <button class="lang-btn" data-lang="IT">IT</button>
+            <button class="lang-btn" data-lang="PT">PT</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy" data-i18n="footer.copyright">© 2026 Sorelle. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</main><!-- /main -->
+
+<!-- ========== SCRIPTS ========== -->
+<script src="sorelle.js"></script>
+<script>
+(function() {
+  'use strict';
+
+  /* ---- Tuning constants ---- */
+  const VELOCITY_MULTIPLIER = 2.5;   // lookahead multiplier on fast scroll
+  const SNAP_ZONE           = 0.04;  // ±4% progress triggers snap
+  const HOLD_DURATION       = 700;   // ms to hold at snap point
+  const LERP_FACTOR         = 0.12;  // frame smoothing (0=frozen, 1=instant)
+
+  /* ---- DOM refs ---- */
+  const canvas     = document.getElementById('heroCanvas');
+  const overlay    = document.getElementById('heroOverlay');
+  const section    = document.getElementById('heroSection');
+  const ctx        = canvas.getContext('2d');
+  const loaderEl   = document.getElementById('loader');
+  const loaderBar  = document.getElementById('loaderBar');
+  const scrollHint = document.getElementById('scrollHint');
+  const cards      = Array.from(document.querySelectorAll('#heroOverlay .annotation-card'));
+
+  /* ---- Frame state ---- */
+  const FRAME_COUNT = 61;
+  const FRAME_DIR   = 'frames-hero/';
+  const frames      = [];
+  let loadedCount   = 0;
+  let allLoaded     = false;
+
+  /* ---- Lerp state ---- */
+  let targetFrame = 0;   // desired frame (float, velocity-biased)
+  let lerpedFrame = 0;   // current smooth frame (float)
+  let drawnFrame  = -1;  // last integer frame sent to canvas
+
+  /* ---- Scroll velocity tracking ---- */
+  let lastScrollY = window.scrollY;
+
+  /* ---- Snap-stop state ---- */
+  let snapActive      = false;
+  let snapTargetY     = 0;
+  let snapReleaseTime = 0;
+  const snappedSet    = new Set(); // cards that have been snapped this pass
+
+  /* ---- Utility ---- */
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
+
+  /* ---- Canvas resize ---- */
+  function resizeCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width  = window.innerWidth  * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width  = window.innerWidth  + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    if (drawnFrame >= 0) drawFrame(drawnFrame);
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  /* ---- Draw frame to canvas ---- */
+  function drawFrame(index) {
+    const img = frames[index];
+    if (!img || !img.complete) return;
+    const cw = canvas.width, ch = canvas.height;
+    ctx.clearRect(0, 0, cw, ch);
+    const imgRatio = img.naturalWidth / img.naturalHeight;
+    const cvRatio  = cw / ch;
+    let drawW, drawH;
+    if (window.innerWidth > 768) {
+      // Desktop: cover-fit
+      if (cvRatio > imgRatio) { drawW = cw; drawH = cw / imgRatio; }
+      else                    { drawH = ch; drawW = ch * imgRatio; }
+    } else {
+      // Mobile: zoomed contain-fit
+      const zoom = 1.15;
+      if (cvRatio > imgRatio) { drawH = ch * zoom; drawW = drawH * imgRatio; }
+      else                    { drawW = cw * zoom; drawH = drawW / imgRatio; }
+    }
+    ctx.drawImage(img, (cw - drawW) / 2, (ch - drawH) / 2, drawW, drawH);
+  }
+
+  /* ---- Frame preloading ---- */
+  function preloadFrames() {
+    for (let i = 1; i <= FRAME_COUNT; i++) {
+      const img = new Image();
+      img.onload = img.onerror = () => {
+        loadedCount++;
+        loaderBar.style.width = (loadedCount / FRAME_COUNT * 100) + '%';
+        if (loadedCount === FRAME_COUNT) onAllLoaded();
+      };
+      img.src = FRAME_DIR + 'frame_' + String(i).padStart(4, '0') + '.jpg';
+      frames[i - 1] = img;
+    }
+  }
+
+  function onAllLoaded() {
+    allLoaded = true;
+    drawFrame(0); drawnFrame = 0;
+    loaderEl.style.opacity = '0';
+    setTimeout(() => { loaderEl.style.display = 'none'; }, 650);
+  }
+
+  /* ---- Scroll handler: updates velocity-based targetFrame ---- */
+  window.addEventListener('scroll', () => {
+    const scrollY    = window.scrollY;
+    const scrollDelta = scrollY - lastScrollY;
+    lastScrollY = scrollY;
+
+    const rect       = section.getBoundingClientRect();
+    const scrollable = section.offsetHeight - window.innerHeight;
+    if (scrollable <= 0) return;
+
+    const rawProg  = -rect.top / scrollable;
+    const progress = clamp(rawProg, 0, 1);
+    const inSection = rawProg >= -0.01 && rawProg <= 1.01;
+
+    // Canvas visibility
+    const shouldShow = inSection && allLoaded;
+    canvas.style.opacity  = shouldShow ? '1' : '0';
+    overlay.style.opacity = shouldShow ? '1' : '0';
+
+    // Scroll hint
+    if (scrollHint && scrollY > 80) {
+      scrollHint.style.opacity   = '0';
+      scrollHint.style.transition = 'opacity 0.4s ease';
+    }
+
+    // Velocity-biased target frame:
+    //   posTarget  = where we "should" be based on position
+    //   velBias    = lookahead proportional to scroll speed (extra past posTarget)
+    const framesPerPx = (FRAME_COUNT - 1) / scrollable;
+    const posTarget   = progress * (FRAME_COUNT - 1);
+    const velBias     = scrollDelta * framesPerPx * (VELOCITY_MULTIPLIER - 1);
+    targetFrame = clamp(posTarget + velBias, 0, FRAME_COUNT - 1);
+
+    // Annotation cards + directional snap
+    cards.forEach((card, i) => {
+      const show = parseFloat(card.dataset.show);
+      const hide = parseFloat(card.dataset.hide);
+      card.classList.toggle('visible', progress >= show && progress <= hide);
+
+      // Snap: only when scrolling DOWN and entering the zone for the first time
+      const scrollingDown = scrollDelta > 0;
+      if (!snappedSet.has(i) && !snapActive && scrollingDown &&
+          progress >= show && progress < show + SNAP_ZONE) {
+        snappedSet.add(i);
+        snapActive      = true;
+        snapTargetY     = Math.round(section.offsetTop + show * scrollable);
+        snapReleaseTime = Date.now() + HOLD_DURATION;
+      }
+      // Reset: allow re-snap after scrolling back below the snap point
+      if (progress < show - SNAP_ZONE) snappedSet.delete(i);
+    });
+
+  }, { passive: true });
+
+  /* ---- Unified render loop: lerp + draw + snap hold ---- */
+  function renderLoop() {
+    if (allLoaded) {
+      // Advance lerp toward target
+      lerpedFrame = lerp(lerpedFrame, targetFrame, LERP_FACTOR);
+      const frameIndex = clamp(Math.round(lerpedFrame), 0, FRAME_COUNT - 1);
+      if (frameIndex !== drawnFrame) {
+        drawnFrame = frameIndex;
+        drawFrame(frameIndex);
+      }
+
+      // Hold snap position via window.scrollTo()
+      if (snapActive) {
+        if (Date.now() < snapReleaseTime) {
+          window.scrollTo(0, snapTargetY);
+        } else {
+          snapActive = false;
+        }
+      }
+    }
+    requestAnimationFrame(renderLoop);
+  }
+  requestAnimationFrame(renderLoop);
+
+  /* ---- Reveal on scroll ---- */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('revealed'); revealObserver.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ---- Kick off ---- */
+  preloadFrames();
+
+})();
+</script>
+
+<style>
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.delay-1 { transition-delay: 0.12s; }
+.reveal.delay-2 { transition-delay: 0.24s; }
+.reveal.delay-3 { transition-delay: 0.36s; }
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+</style>
+
+</body>
+</html>

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorelle — About Us</title>
+  <meta name="description" content="Learn about Sorelle's mission, value chain, infrastructure and scientific research in aloe vera raw materials.">
+  <link rel="stylesheet" href="sorelle.css">
+  <link rel="icon" type="image/png" href="logo-sorelle-def.png">
+  <link rel="apple-touch-icon" href="logo-sorelle-def.png">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    body { background: #fff; }
+    .scroll-animation { background: #FFFFFF; }
+
+    /* --- Annotation cards: dark text (white-bg video) --- */
+    #aboutOverlay .annotation-card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+    }
+    #aboutOverlay .card-number {
+      color: #1B5C35;
+    }
+    #aboutOverlay .card-title {
+      color: #2C2C2C;
+    }
+    #aboutOverlay .card-desc {
+      color: #6B7280;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== SCROLL PROGRESS ========== -->
+<div id="scrollProgress"></div>
+
+<!-- ========== ABOUT CANVAS (fixed) ========== -->
+<canvas id="aboutCanvas" class="scroll-canvas"></canvas>
+
+<!-- ========== ANNOTATION CARDS OVERLAY ========== -->
+<div id="aboutOverlay" class="scroll-canvas-overlay">
+  <div class="annotation-card card-right" data-show="0.22" data-hide="0.44">
+    <div class="card-number">01</div>
+    <div class="card-title">Inner Leaf Fillet</div>
+    <div class="card-desc">100% pure — peel completely removed</div>
+  </div>
+  <div class="annotation-card" data-show="0.51" data-hide="0.70">
+    <div class="card-number">02</div>
+    <div class="card-title">Yellow Latex Layer</div>
+    <div class="card-desc">Separated for maximum purity</div>
+  </div>
+  <div class="annotation-card card-right" data-show="0.76" data-hide="0.95">
+    <div class="card-number">03</div>
+    <div class="card-title">Crystal Clear Gel</div>
+    <div class="card-desc">No additives. Negative iodine reaction confirms purity.</div>
+  </div>
+</div>
+
+<!-- ========== LOADER ========== -->
+<div id="loader">
+  <div class="loader-content">
+    <div class="loader-logo">
+      <img src="sorelle-logo.png" alt="Sorelle">
+      <span class="loader-logo-name">Sorelle</span>
+    </div>
+    <p class="loader-text" data-i18n="loader.text">Loading</p>
+    <div class="loader-bar-track">
+      <div class="loader-bar-fill" id="loaderBar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== NAVBAR ========== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo-sorelle-def.png" alt="Sorelle" style="height:40px;width:auto;">
+    </a>
+    <div class="nav-links">
+      <a href="index.html" data-page="index.html" data-i18n="nav.home">Home</a>
+      <a href="about.html" data-page="about.html" data-i18n="nav.about">About</a>
+      <a href="products.html" data-page="products.html" data-i18n="nav.products">Products</a>
+      <a href="contact.html" data-page="contact.html" data-i18n="nav.contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div class="nav-lang">
+        <button class="lang-btn" data-lang="EN">EN</button>
+        <button class="lang-btn" data-lang="IT">IT</button>
+        <button class="lang-btn" data-lang="PT">PT</button>
+      </div>
+      <a href="contact.html" class="btn nav-cta" data-i18n="nav.cta">Request a Sample</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Drawer -->
+<div class="nav-mobile-drawer">
+  <button class="nav-mobile-close" aria-label="Close">✕</button>
+  <a href="index.html" data-i18n="nav.home">Home</a>
+  <a href="about.html" data-i18n="nav.about">About</a>
+  <a href="products.html" data-i18n="nav.products">Products</a>
+  <a href="contact.html" data-i18n="nav.contact">Contact</a>
+  <a href="contact.html" class="nav-mobile-cta" data-i18n="nav.cta">Request a Sample</a>
+  <div class="nav-mobile-lang">
+    <button class="lang-btn" data-lang="EN">EN</button>
+    <button class="lang-btn" data-lang="IT">IT</button>
+    <button class="lang-btn" data-lang="PT">PT</button>
+  </div>
+</div>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main>
+
+  <!-- ===== 2. ABOUT SCROLL ANIMATION SPACER (400vh) ===== -->
+  <section class="scroll-animation" id="aboutSection">
+    <div style="position:sticky; top:0; height:100vh; display:flex; align-items:flex-end; justify-content:center; padding-bottom:40px; pointer-events:none; z-index:10;">
+      <div class="scroll-hint" id="scrollHint">
+        <span data-i18n="hero.scroll">Scroll to explore</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. CHI SIAMO ===== -->
+  <section style="background:#fff; padding:100px 40px;">
+    <div class="two-col" style="max-width:1200px; margin:0 auto;">
+      <div class="reveal">
+        <span class="section-label">Sorelle</span>
+        <h2 class="section-title" data-i18n="about.who.title">Who We Are</h2>
+        <p class="mt-24" data-i18n="about.who.text">Sorelle is a leading Brazilian company in the production and distribution of Aloe Vera raw materials...</p>
+        <a href="contact.html" class="btn btn-secondary mt-32" data-i18n="nav.cta">Request a Sample</a>
+      </div>
+      <div class="reveal" style="border-radius:16px; overflow:hidden; min-height:320px;">
+        <img src="plantation-photo.JPG" alt="Sorelle — Aloe vera plantation"
+             style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. VALUE CHAIN ===== -->
+  <section style="background:var(--bg-cream); padding:100px 40px;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div class="reveal">
+        <span class="section-label">Sorelle</span>
+        <h2 class="section-title" data-i18n="about.chain.title">Our Value Chain</h2>
+      </div>
+      <div class="value-chain mt-48 reveal">
+        <div class="chain-node">
+          <div class="chain-circle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><line x1="128" y1="224" x2="128" y2="112"/><path d="M128,176 Q128,112 64,88"/><path d="M128,136 Q128,64 200,48"/></svg></div>
+          <span class="chain-label">CULTIVO</span>
+          <span class="chain-location">Pilar, Bahia</span>
+        </div>
+        <div class="chain-node">
+          <div class="chain-circle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><path d="M96,40 L96,160 L48,224 Q40,236 52,236 L204,236 Q216,236 208,224 L160,160 L160,40Z"/><line x1="80" y1="40" x2="176" y2="40"/><line x1="96" y1="152" x2="160" y2="152"/></svg></div>
+          <span class="chain-label">R&amp;D</span>
+          <span class="chain-location">Bom Retiro + Curitiba</span>
+        </div>
+        <div class="chain-node">
+          <div class="chain-circle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><rect x="24" y="88" width="208" height="144" rx="8"/><path d="M24,136 L80,104 L80,136 L136,104 L136,136 L192,104 L192,136"/><rect x="96" y="152" width="40" height="80" rx="4"/></svg></div>
+          <span class="chain-label">FABRICAÇÃO</span>
+          <span class="chain-location">Bom Retiro + Curitiba</span>
+        </div>
+        <div class="chain-node">
+          <div class="chain-circle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="88" width="152" height="120" rx="8"/><path d="M168,96 L216,128 L216,208 L168,208"/><circle cx="60" cy="208" r="20"/><circle cx="196" cy="208" r="20"/></svg></div>
+          <span class="chain-label">DISTRIBUIÇÃO</span>
+          <span class="chain-location">Curitiba</span>
+        </div>
+        <div class="chain-node">
+          <div class="chain-circle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><path d="M32,96 L32,160 L80,160 L176,216 L176,40 L80,96 Z"/><path d="M80,96 L80,160"/><path d="M208,88 Q224,128 208,168"/></svg></div>
+          <span class="chain-label">MARKETING</span>
+          <span class="chain-location">Curitiba</span>
+        </div>
+        <div class="chain-node">
+          <div class="chain-circle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><path d="M32,80 L128,32 L224,80 L224,176 L128,224 L32,176 Z"/><line x1="32" y1="80" x2="128" y2="128"/><line x1="224" y1="80" x2="128" y2="128"/><line x1="128" y1="128" x2="128" y2="224"/><line x1="80" y1="56" x2="176" y2="104"/></svg></div>
+          <span class="chain-label">PRODUTOS</span>
+          <span class="chain-location">Brazil → World</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. LE DUE SEDI ===== -->
+  <section style="background:#fff; padding:100px 40px;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div class="reveal">
+        <span class="section-label" data-i18n="sections.about">About Us</span>
+        <h2 class="section-title" data-i18n="about.infra.title">Our Infrastructure</h2>
+      </div>
+      <div class="infra-grid mt-48">
+        <div class="infra-card reveal">
+          <div class="infra-card-photo" style="overflow:hidden;">
+            <img src="pilar-plantation.JPG" alt="Pilar plantation, Bahia"
+                 style="width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <div class="infra-card-body">
+            <h3 data-i18n="about.infra.pilar.title">Pilar, Bahia</h3>
+            <p data-i18n="about.infra.pilar.text">Aloe vera cultivation and extraction. 380 hectares of certified plantation.</p>
+          </div>
+        </div>
+        <div class="infra-card reveal delay-1">
+          <div class="infra-card-photo" style="overflow:hidden;">
+            <img src="bom-retiro-facility.png" alt="Bom Retiro manufacturing facility, Santa Catarina"
+                 style="width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <div class="infra-card-body">
+            <h3 data-i18n="about.infra.bom.title">Bom Retiro, Santa Catarina</h3>
+            <p data-i18n="about.infra.bom.text">Processing and manufacturing facility.</p>
+          </div>
+        </div>
+      </div>
+      <div id="brazilMap" class="reveal mt-32" style="height:420px; border-radius:16px; overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow);"></div>
+
+      <script>
+      (function() {
+        // Init after DOM is ready — use a small delay to let Leaflet load
+        function initMap() {
+          if (typeof L === 'undefined') { setTimeout(initMap, 80); return; }
+
+          const map = L.map('brazilMap', {
+            center: [-14.0, -51.0],
+            zoom: 4,
+            scrollWheelZoom: false,
+            zoomControl: true,
+            attributionControl: true
+          });
+
+          // Minimal light tile layer (CartoDB Light)
+          L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
+          }).addTo(map);
+
+          // Custom green SVG pin icon
+          function greenPin() {
+            return L.divIcon({
+              className: '',
+              html: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 32 40">
+                <path d="M16 0C7.163 0 0 7.163 0 16c0 10.667 16 24 16 24S32 26.667 32 16C32 7.163 24.837 0 16 0z"
+                      fill="#1B5C35" stroke="#fff" stroke-width="2"/>
+                <circle cx="16" cy="16" r="6" fill="#fff"/>
+              </svg>`,
+              iconSize: [32, 40],
+              iconAnchor: [16, 40],
+              popupAnchor: [0, -42]
+            });
+          }
+
+          // Pin 1 — Pilar, Bahia
+          L.marker([-10.7331, -37.0541], { icon: greenPin() })
+            .addTo(map)
+            .bindPopup(`
+              <div style="font-family:'Montserrat',sans-serif; min-width:180px;">
+                <strong style="font-size:0.82rem; color:#1B5C35; display:block; margin-bottom:4px;">Pilar, Bahia</strong>
+                <span style="font-size:0.75rem; color:#6B7280; line-height:1.5;">
+                  Aloe vera cultivation &amp; extraction — 380 hectares
+                </span>
+              </div>
+            `, { maxWidth: 220 });
+
+          // Pin 2 — Bom Retiro, Santa Catarina
+          L.marker([-27.8369, -49.6428], { icon: greenPin() })
+            .addTo(map)
+            .bindPopup(`
+              <div style="font-family:'Montserrat',sans-serif; min-width:180px;">
+                <strong style="font-size:0.82rem; color:#1B5C35; display:block; margin-bottom:4px;">Bom Retiro, Santa Catarina</strong>
+                <span style="font-size:0.75rem; color:#6B7280; line-height:1.5;">
+                  Processing &amp; manufacturing facility
+                </span>
+              </div>
+            `, { maxWidth: 220 });
+
+          // Fix tile rendering after reveal animation (map inside hidden element)
+          const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+              if (e.isIntersecting) { map.invalidateSize(); observer.disconnect(); }
+            });
+          }, { threshold: 0.1 });
+          observer.observe(document.getElementById('brazilMap'));
+        }
+        initMap();
+      })();
+      </script>
+    </div>
+  </section>
+
+  <!-- ===== 6. R&D — UNIVERSITÀ DI SALERNO ===== -->
+  <section class="rnd-section">
+    <div class="rnd-inner">
+      <div class="reveal">
+        <span class="section-label" style="color:var(--accent-light);">R&amp;D</span>
+        <h2 class="section-title" data-i18n="about.rnd.title">Scientific Research &amp; Innovation</h2>
+        <p class="mt-24" data-i18n="about.rnd.text">Sorelle actively invests in R&amp;D through collaboration with Aracne Biotech...</p>
+        <div style="margin-top:32px; display:flex; gap:12px; flex-wrap:wrap;">
+          <span style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:100px; padding:6px 16px; font-size:0.78rem; color:#fff; font-family:var(--font-mono); letter-spacing:1px;">University of Salerno</span>
+          <span style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:100px; padding:6px 16px; font-size:0.78rem; color:#fff; font-family:var(--font-mono); letter-spacing:1px;">Aracne Biotech</span>
+          <span style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:100px; padding:6px 16px; font-size:0.78rem; color:#fff; font-family:var(--font-mono); letter-spacing:1px;">E2 Extract</span>
+        </div>
+      </div>
+      <div class="rnd-cards reveal">
+        <div class="rnd-card">
+          <div class="rnd-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><polyline points="24,128 64,128 88,72 112,184 136,96 160,128 200,128 224,128"/></svg></div>
+          <h3 data-i18n="about.rnd.card1.title">Cell Vitality</h3>
+          <p data-i18n="about.rnd.card1.text">Maintains liver cells healthier and more vital</p>
+        </div>
+        <div class="rnd-card">
+          <div class="rnd-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><path d="M128,224 C128,224 32,176 32,96 L32,64 L128,32 L224,64 L224,96 C224,176 128,224 128,224Z"/><polyline points="88,128 112,152 168,96"/></svg></div>
+          <h3 data-i18n="about.rnd.card2.title">Antioxidant Protection</h3>
+          <p data-i18n="about.rnd.card2.text">Reduces damage caused by oxidative stress</p>
+        </div>
+        <div class="rnd-card">
+          <div class="rnd-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><polygon points="144,16 56,148 120,148 112,240 200,108 136,108"/></svg></div>
+          <h3 data-i18n="about.rnd.card3.title">Metabolic Support</h3>
+          <p data-i18n="about.rnd.card3.text">Supports normal metabolic function</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. CERTIFICATIONS ===== -->
+  <section style="background:#fff; padding:100px 40px;">
+    <div style="max-width:1000px; margin:0 auto; text-align:center;">
+      <span class="section-label" data-i18n="sections.certifications">Certifications</span>
+      <h2 class="section-title reveal" data-i18n="cert.title">Certifications &amp; Quality Assurance</h2>
+      <div class="cert-logos reveal">
+        <div class="cert-badge"><!-- INSERIRE LOGO CERTIFICAZIONE -->USDA Organic</div>
+        <div class="cert-badge"><!-- INSERIRE LOGO CERTIFICAZIONE -->EcoCert</div>
+        <div class="cert-badge"><!-- INSERIRE LOGO CERTIFICAZIONE -->EU Organic</div>
+        <div class="cert-badge"><!-- INSERIRE LOGO CERTIFICAZIONE -->Primus GFS</div>
+      </div>
+      <p class="reveal" style="max-width:640px; margin:0 auto;" data-i18n="cert.text">Quality testing conducted both in-house and by third-party laboratories. Lot-level traceability and comprehensive technical documentation provided.</p>
+    </div>
+  </section>
+
+  <!-- ===== 8. CTA ===== -->
+  <section class="cta-section">
+    <div style="position:relative; z-index:1;">
+      <div class="orb orb-green" style="width:500px;height:500px;top:-200px;left:-100px;"></div>
+      <span class="section-label">Sorelle</span>
+      <h2 data-i18n="cta.headline">Ready to Elevate Your Formulation?</h2>
+      <p data-i18n="cta.subtext">Request a free sample and our technical team will contact you within 24 hours.</p>
+      <a href="contact.html" class="btn btn-primary" data-i18n="cta.button">Request a Sample</a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="sorelle-logo.png" alt="Sorelle">
+            <span class="footer-logo-name">Sorelle</span>
+          </div>
+          <p class="footer-tagline">Premium Aloe Vera Raw Materials<br>Bahia, Brazil → World</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Navigation</h4>
+          <div class="footer-links-grid">
+            <a href="index.html" data-i18n="nav.home">Home</a>
+            <a href="about.html" data-i18n="nav.about">About</a>
+            <a href="products.html" data-i18n="nav.products">Products</a>
+            <a href="contact.html" data-i18n="nav.contact">Contact</a>
+          </div>
+        </div>
+        <div class="footer-right">
+          <h4>Certifications</h4>
+          <div class="footer-cert-badges">
+            <span class="footer-cert-badge">USDA Organic</span>
+            <span class="footer-cert-badge">EcoCert</span>
+            <span class="footer-cert-badge">EU Organic</span>
+            <span class="footer-cert-badge">Primus GFS</span>
+          </div>
+          <div class="footer-lang">
+            <button class="lang-btn" data-lang="EN">EN</button>
+            <button class="lang-btn" data-lang="IT">IT</button>
+            <button class="lang-btn" data-lang="PT">PT</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy" data-i18n="footer.copyright">© 2026 Sorelle. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<!-- ========== SCRIPTS ========== -->
+<script src="sorelle.js"></script>
+<script>
+(function() {
+  'use strict';
+
+  /* ---- Tuning constants ---- */
+  const VELOCITY_MULTIPLIER = 2.5;
+  const SNAP_ZONE           = 0.04;
+  const HOLD_DURATION       = 700;
+  const LERP_FACTOR         = 0.12;
+
+  /* ---- DOM refs ---- */
+  const canvas     = document.getElementById('aboutCanvas');
+  const overlay    = document.getElementById('aboutOverlay');
+  const section    = document.getElementById('aboutSection');
+  const ctx        = canvas.getContext('2d');
+  const loaderEl   = document.getElementById('loader');
+  const loaderBar  = document.getElementById('loaderBar');
+  const scrollHint = document.getElementById('scrollHint');
+  const cards      = Array.from(document.querySelectorAll('#aboutOverlay .annotation-card'));
+
+  /* ---- Frame state ---- */
+  const FRAME_COUNT = 85;
+  const FRAME_DIR   = 'frames-about/';
+  const frames      = [];
+  let loadedCount   = 0;
+  let allLoaded     = false;
+
+  /* ---- Lerp state ---- */
+  let targetFrame = 0;
+  let lerpedFrame = 0;
+  let drawnFrame  = -1;
+
+  /* ---- Scroll velocity tracking ---- */
+  let lastScrollY = window.scrollY;
+
+  /* ---- Snap-stop state ---- */
+  let snapActive      = false;
+  let snapTargetY     = 0;
+  let snapReleaseTime = 0;
+  const snappedSet    = new Set();
+
+  /* ---- Utility ---- */
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
+
+  /* ---- Canvas resize ---- */
+  function resizeCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width  = window.innerWidth  * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width  = window.innerWidth  + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    if (drawnFrame >= 0) drawFrame(drawnFrame);
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  /* ---- Draw frame to canvas ---- */
+  function drawFrame(index) {
+    const img = frames[index];
+    if (!img || !img.complete) return;
+    const cw = canvas.width, ch = canvas.height;
+    ctx.clearRect(0, 0, cw, ch);
+    const imgRatio = img.naturalWidth / img.naturalHeight;
+    const cvRatio  = cw / ch;
+    let drawW, drawH;
+    if (window.innerWidth > 768) {
+      if (cvRatio > imgRatio) { drawW = cw; drawH = cw / imgRatio; }
+      else                    { drawH = ch; drawW = ch * imgRatio; }
+    } else {
+      const zoom = 1.15;
+      if (cvRatio > imgRatio) { drawH = ch * zoom; drawW = drawH * imgRatio; }
+      else                    { drawW = cw * zoom; drawH = drawW / imgRatio; }
+    }
+    ctx.drawImage(img, (cw - drawW) / 2, (ch - drawH) / 2, drawW, drawH);
+  }
+
+  /* ---- Frame preloading ---- */
+  function preloadFrames() {
+    for (let i = 1; i <= FRAME_COUNT; i++) {
+      const img = new Image();
+      img.onload = img.onerror = () => {
+        loadedCount++;
+        loaderBar.style.width = (loadedCount / FRAME_COUNT * 100) + '%';
+        if (loadedCount === FRAME_COUNT) onAllLoaded();
+      };
+      img.src = FRAME_DIR + 'frame_' + String(i).padStart(4, '0') + '.jpg';
+      frames[i - 1] = img;
+    }
+  }
+
+  function onAllLoaded() {
+    allLoaded = true;
+    drawFrame(0); drawnFrame = 0;
+    loaderEl.style.opacity = '0';
+    setTimeout(() => { loaderEl.style.display = 'none'; }, 650);
+  }
+
+  /* ---- Scroll handler: updates velocity-based targetFrame ---- */
+  window.addEventListener('scroll', () => {
+    const scrollY     = window.scrollY;
+    const scrollDelta = scrollY - lastScrollY;
+    lastScrollY = scrollY;
+
+    const rect       = section.getBoundingClientRect();
+    const scrollable = section.offsetHeight - window.innerHeight;
+    if (scrollable <= 0) return;
+
+    const rawProg  = -rect.top / scrollable;
+    const progress = clamp(rawProg, 0, 1);
+    const inSection = rawProg >= -0.01 && rawProg <= 1.01;
+
+    // Canvas visibility
+    const shouldShow = inSection && allLoaded;
+    canvas.style.opacity  = shouldShow ? '1' : '0';
+    overlay.style.opacity = shouldShow ? '1' : '0';
+
+    // Scroll hint
+    if (scrollHint && scrollY > 80) {
+      scrollHint.style.opacity    = '0';
+      scrollHint.style.transition = 'opacity 0.4s ease';
+    }
+
+    // Velocity-biased target frame
+    const framesPerPx = (FRAME_COUNT - 1) / scrollable;
+    const posTarget   = progress * (FRAME_COUNT - 1);
+    const velBias     = scrollDelta * framesPerPx * (VELOCITY_MULTIPLIER - 1);
+    targetFrame = clamp(posTarget + velBias, 0, FRAME_COUNT - 1);
+
+    // Annotation cards + directional snap
+    cards.forEach((card, i) => {
+      const show = parseFloat(card.dataset.show);
+      const hide = parseFloat(card.dataset.hide);
+      card.classList.toggle('visible', progress >= show && progress <= hide);
+
+      const scrollingDown = scrollDelta > 0;
+      if (!snappedSet.has(i) && !snapActive && scrollingDown &&
+          progress >= show && progress < show + SNAP_ZONE) {
+        snappedSet.add(i);
+        snapActive      = true;
+        snapTargetY     = Math.round(section.offsetTop + show * scrollable);
+        snapReleaseTime = Date.now() + HOLD_DURATION;
+      }
+      if (progress < show - SNAP_ZONE) snappedSet.delete(i);
+    });
+
+  }, { passive: true });
+
+  /* ---- Unified render loop: lerp + draw + snap hold ---- */
+  function renderLoop() {
+    if (allLoaded) {
+      lerpedFrame = lerp(lerpedFrame, targetFrame, LERP_FACTOR);
+      const frameIndex = clamp(Math.round(lerpedFrame), 0, FRAME_COUNT - 1);
+      if (frameIndex !== drawnFrame) {
+        drawnFrame = frameIndex;
+        drawFrame(frameIndex);
+      }
+      if (snapActive) {
+        if (Date.now() < snapReleaseTime) {
+          window.scrollTo(0, snapTargetY);
+        } else {
+          snapActive = false;
+        }
+      }
+    }
+    requestAnimationFrame(renderLoop);
+  }
+  requestAnimationFrame(renderLoop);
+
+  /* ---- Reveal on scroll ---- */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('revealed'); revealObserver.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ---- Kick off ---- */
+  preloadFrames();
+})();
+</script>
+
+<style>
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.delay-1 { transition-delay: 0.12s; }
+.reveal.delay-2 { transition-delay: 0.24s; }
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+</style>
+
+</body>
+</html>

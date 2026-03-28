@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorelle — Products</title>
+  <meta name="description" content="Sorelle's full product portfolio: Aloe Vera Gel, Pulp, Powder and Extract. Technical specifications, TDS and SDS available.">
+  <link rel="stylesheet" href="sorelle.css">
+  <link rel="icon" type="image/png" href="logo-sorelle-def.png">
+  <link rel="apple-touch-icon" href="logo-sorelle-def.png">
+  <style>
+    body { background: #fff; }
+    main { padding-top: 0; }
+  </style>
+</head>
+<body>
+
+<div id="scrollProgress"></div>
+
+<!-- ========== NAVBAR ========== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo-sorelle-def.png" alt="Sorelle" style="height:40px;width:auto;">
+    </a>
+    <div class="nav-links">
+      <a href="index.html" data-page="index.html" data-i18n="nav.home">Home</a>
+      <a href="about.html" data-page="about.html" data-i18n="nav.about">About</a>
+      <a href="products.html" data-page="products.html" data-i18n="nav.products">Products</a>
+      <a href="contact.html" data-page="contact.html" data-i18n="nav.contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div class="nav-lang">
+        <button class="lang-btn" data-lang="EN">EN</button>
+        <button class="lang-btn" data-lang="IT">IT</button>
+        <button class="lang-btn" data-lang="PT">PT</button>
+      </div>
+      <a href="contact.html" class="btn nav-cta" data-i18n="nav.cta">Request a Sample</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile-drawer">
+  <button class="nav-mobile-close">✕</button>
+  <a href="index.html" data-i18n="nav.home">Home</a>
+  <a href="about.html" data-i18n="nav.about">About</a>
+  <a href="products.html" data-i18n="nav.products">Products</a>
+  <a href="contact.html" data-i18n="nav.contact">Contact</a>
+  <a href="contact.html" class="nav-mobile-cta" data-i18n="nav.cta">Request a Sample</a>
+  <div class="nav-mobile-lang">
+    <button class="lang-btn" data-lang="EN">EN</button>
+    <button class="lang-btn" data-lang="IT">IT</button>
+    <button class="lang-btn" data-lang="PT">PT</button>
+  </div>
+</div>
+
+<main>
+
+  <!-- ===== 2. HERO STATICO ===== -->
+  <section class="hero-static hero-static-dark">
+    <div class="orb orb-sage" style="width:600px;height:600px;top:-200px;right:-150px;"></div>
+    <div class="hero-static-inner">
+      <span class="section-label" style="color:var(--accent-light);">Portfolio</span>
+      <h1 data-i18n="products.hero.title">Our Product Portfolio</h1>
+      <p class="hero-subtitle mt-16" data-i18n="products.hero.subtitle">From organic-certified to conventional aloe vera ingredients. Each product supplied with COA, batch-tested for purity and bioactivity.</p>
+    </div>
+  </section>
+
+  <!-- ===== 3. PRODUCTS — 4 ACCORDION CARDS ===== -->
+  <section style="background:#fff; padding:80px 40px;">
+    <div style="max-width:1100px; margin:0 auto;">
+      <span class="section-label" data-i18n="sections.products">Products</span>
+      <h2 class="section-title reveal" data-i18n="products.title">Our Products</h2>
+
+      <!-- === CARD 1: Aloe Vera Gel === -->
+      <div class="product-accordion reveal mt-32" id="acc-gel">
+        <div class="accordion-header">
+          <span class="accordion-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><path d="M128,32 Q80,100 80,152 a48,48 0 0,0 96,0 Q176,100 128,32Z"/></svg></span>
+          <div>
+            <div class="accordion-title" data-i18n="products.gel">Aloe Vera Gel</div>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:4px;" data-i18n="products.gel.desc">Available in 1:1, 10:1 and 20:1 concentration ratios.</p>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </div>
+        <div class="accordion-body">
+          <table class="product-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>TDS</th>
+                <th>SDS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Aloe Vera Gel 1:X – Organic</td>
+                <td><a href="pdf/TDS%20-%20GEL%201X%20%E2%80%93%20ORGANICO.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">TDS</text></svg></a></td>
+                <td><a href="pdf/MSDS%20-%20GEL%201X%20-%20ORG.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">SDS</text></svg></a></td>
+              </tr>
+              <tr>
+                <td>Aloe Vera Gel 1:1 – Conventional</td>
+                <td><a href="pdf/TDS%20-%20GEL%201X%20%E2%80%93%20SB.pdf%20%281%29.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">TDS</text></svg></a></td>
+                <td><a href="pdf/MSDS%20-%20GEL%201X%20-%20SB.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">SDS</text></svg></a></td>
+              </tr>
+              <tr>
+                <td>Aloe Vera Gel 10:X – Organic</td>
+                <td><a href="pdf/TDS%20-%20GEL%2010X%20%E2%80%93%20ORGANICO.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">TDS</text></svg></a></td>
+                <td><a href="pdf/MSDS%20ALOEVERA%20GEL%2010-1%20ORG.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">SDS</text></svg></a></td>
+              </tr>
+              <tr>
+                <td>Aloe Vera Gel 10:1 – Conventional</td>
+                <td><a href="pdf/TDS%20-%20GEL%2010X%20%E2%80%93%20SB.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">TDS</text></svg></a></td>
+                <td><a href="pdf/MSDS%20ALOEVERA%20GEL%2010-1%20SB%20CONV.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">SDS</text></svg></a></td>
+              </tr>
+              <tr>
+                <td>Aloe Vera Gel 20:X – Organic</td>
+                <td><a href="pdf/TDS%20-%20GEL%2020X%20%E2%80%93%20ORGANICO.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">TDS</text></svg></a></td>
+                <td><a href="pdf/MSDS%20ALOEVERA%20GEL%2020-1%20ORG.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">SDS</text></svg></a></td>
+              </tr>
+              <tr>
+                <td>Aloe Vera Gel 20:1 – Conventional</td>
+                <td><a href="pdf/TDS%20-%20GEL%2020X%20%E2%80%93%20SB.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">TDS</text></svg></a></td>
+                <td><a href="pdf/MSDS%20ALOEVERA%20GEL%2020-1%20SB%20CONV.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">SDS</text></svg></a></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="table-note">Each product is supplied with a Certificate of Analysis (COA). Manufactured to meet regulatory standards in the EU, FDA, and Latin America.</p>
+          <p class="legend" data-i18n="products.legend">AL = Food · CO = Cosmetics · ME = Medicines · SU = Supplements</p>
+        </div>
+      </div>
+
+      <!-- === CARD 2: Aloe Vera Pulp === -->
+      <div class="product-accordion reveal" id="acc-pulp">
+        <div class="accordion-header">
+          <span class="accordion-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><path d="M40,216C88,168,168,120,216,40"/><path d="M40,216c56-48,104-128,176-176"/><path d="M40,216a144,144,0,0,1,96-128"/></svg></span>
+          <div>
+            <div class="accordion-title" data-i18n="products.pulp">Aloe Vera Pulp</div>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:4px;" data-i18n="products.pulp.desc">Fresh inner-leaf fillet in 1:1 raw form or 3×5mm cube.</p>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </div>
+        <div class="accordion-body">
+          <table class="product-table">
+            <thead>
+              <tr><th>Product</th><th>TDS</th><th>SDS</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Aloe Vera 1:1 with Pulp 3×5mm – Organic</td>
+                <td><a href="pdf/TDS%20-%20GEL%201X%20W.PULP%20%E2%80%93%20ORGANICO.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">TDS</text></svg></a></td>
+                <td><a href="pdf/MSDS%20-%20GEL%201X%20W.PULP%203x5mm%20%E2%80%93%20ORG.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">SDS</text></svg></a></td>
+              </tr>
+              <tr>
+                <td>Aloe Vera 1:1 with Pulp 3×5mm – Conventional</td>
+                <td><a href="pdf/TDS%20-%20GEL%201X%20W.PULP%20%20%E2%80%93%20CON.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">TDS</text></svg></a></td>
+                <td><a href="pdf/MSDS%20ALOEVERA%201-1%20WITH%20PULP%20CONV.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">SDS</text></svg></a></td>
+              </tr>
+              <tr>
+                <td>Aloe Vera Gel 1:X With Pulp 6×6</td>
+                <td><a href="pdf/TDS%20-%20GEL%201X%20W.PULP%206X6.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">TDS</text></svg></a></td>
+                <td><a href="pdf/MSDS%20-%20GEL%201X%20W.PULP%206X6.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">SDS</text></svg></a></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="table-note">Each product is supplied with a Certificate of Analysis (COA). Manufactured to meet regulatory standards in the EU, FDA, and Latin America.</p>
+          <p class="legend" data-i18n="products.legend">AL = Food · CO = Cosmetics · ME = Medicines · SU = Supplements</p>
+        </div>
+      </div>
+
+      <!-- === CARD 3: Aloe Vera Powder === -->
+      <div class="product-accordion reveal" id="acc-powder">
+        <div class="accordion-header">
+          <span class="accordion-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><circle cx="80" cy="128" r="32"/><circle cx="176" cy="80" r="32"/><circle cx="176" cy="176" r="32"/></svg></span>
+          <div>
+            <div class="accordion-title" data-i18n="products.powder">Aloe Vera Powder</div>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:4px;" data-i18n="products.powder.desc">Freeze-dried powder with concentration ratios from 50:1 up to 1000:1.</p>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </div>
+        <div class="accordion-body">
+          <table class="product-table">
+            <thead>
+              <tr><th>Product</th><th>TDS</th><th>SDS</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Aloe Vera Freeze Dried 200:X Organic</td>
+                <td><a href="pdf/TDS%20-%20FREEZE%20DRIED%20200X%20-%20ORGANICO.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">TDS</text></svg></a></td>
+                <td><a href="pdf/MSDS%20-%20FREEZE%20DRIED%20200X%20-%20ORG.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">SDS</text></svg></a></td>
+              </tr>
+              <tr>
+                <td>Aloe Vera Freeze Dried 200:1 Conventional</td>
+                <td><a href="pdf/TDS%20-%20FREEZE%20DRIED%20200X%20-%20CON.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">TDS</text></svg></a></td>
+                <td><a href="pdf/MSDS%20-%20FREEZE%20DRIED%20200X%20-%20CON.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">SDS</text></svg></a></td>
+              </tr>
+              <tr>
+                <td>Aloe Vera Spray Dried 200:X Organic</td>
+                <td><a href="pdf/TDS%20-%20SPRAY%20DRIED%20200X%20-%20ORGANICO.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">TDS</text></svg></a></td>
+                <td><a href="pdf/MSDS%20-%20SPRAY%20DRIED%20200X%20-%20ORG.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">SDS</text></svg></a></td>
+              </tr>
+              <tr>
+                <td>Aloe Vera Spray Dried 200:1 Conventional</td>
+                <td><a href="pdf/TDS%20-%20SPRAY%20DRIED%20200X%20-%20CON.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">TDS</text></svg></a></td>
+                <td><a href="pdf/MSDS%20-%20SPRAY%20DRIED%20200X%20-%20CON.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">SDS</text></svg></a></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="table-note">Each product is supplied with a Certificate of Analysis (COA). Manufactured to meet regulatory standards in the EU, FDA, and Latin America.</p>
+          <p class="legend" data-i18n="products.legend">AL = Food · CO = Cosmetics · ME = Medicines · SU = Supplements</p>
+        </div>
+      </div>
+
+      <!-- === CARD 4: Aloe Vera Extract === -->
+      <div class="product-accordion reveal" id="acc-extract">
+        <div class="accordion-header">
+          <span class="accordion-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><path d="M96,32 L96,168 Q96,212 128,212 Q160,212 160,168 L160,32"/><line x1="80" y1="32" x2="176" y2="32"/><line x1="96" y1="152" x2="160" y2="152"/></svg></span>
+          <div>
+            <div class="accordion-title" data-i18n="products.extract">Aloe Vera Extract</div>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:4px;" data-i18n="products.extract.desc">Oil-based extract ideal for emulsions and cosmetic formulations.</p>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </div>
+        <div class="accordion-body">
+          <table class="product-table">
+            <thead>
+              <tr><th>Product</th><th>TDS</th><th>SDS</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Aloe Vera Oil Extract</td>
+                <td><a href="pdf/TDS%20-%20OIL%20EXTRACT.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">TDS</text></svg></a></td>
+                <td><a href="pdf/MSDS%20ALOEVERA%20OIL%20EXTRACT.pdf" class="pdf-link" target="_blank"><svg viewBox="0 0 16 20" fill="none"><path d="M10 1H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5l-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 1v4h4" stroke="currentColor" stroke-width="1.5"/><text x="3" y="14" font-size="4.5" fill="currentColor" font-family="monospace" font-weight="bold">SDS</text></svg></a></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="table-note">Each product is supplied with a Certificate of Analysis (COA). Manufactured to meet regulatory standards in the EU, FDA, and Latin America.</p>
+          <p class="legend" data-i18n="products.legend">AL = Food · CO = Cosmetics · ME = Medicines · SU = Supplements</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. PROCESS SECTION ===== -->
+  <section style="background:var(--bg-cream); padding:100px 40px;">
+    <div style="max-width:1100px; margin:0 auto;">
+      <div class="section-center reveal">
+        <span class="section-label">Process</span>
+        <h2 class="section-title" data-i18n="products.process.title">Our Production Process</h2>
+        <p class="section-subtitle" style="margin:0 auto;">From raw leaf to certified ingredient — every step quality-controlled.</p>
+      </div>
+      <div class="process-grid mt-48">
+        <div class="process-step reveal">
+          <div class="process-step-num">01</div>
+          <div class="process-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M160,40h40a8,8,0,0,1,8,8V216a8,8,0,0,1-8,8H56a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8H96"/><path d="M160,40a32,32,0,0,0-64,0H80a8,8,0,0,0-8,8V72a8,8,0,0,0,8,8h96a8,8,0,0,0,8-8V48a8,8,0,0,0-8-8Z"/><line x1="96" y1="136" x2="160" y2="136"/><line x1="96" y1="168" x2="160" y2="168"/></svg></div>
+          <div class="process-step-label">Raw Material Inspection</div>
+        </div>
+        <div class="process-step reveal delay-1">
+          <div class="process-step-num">02</div>
+          <div class="process-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M28,160c16,0,28-16,56-16s40,16,56,16,40-16,56-16,40,16,56,16"/><path d="M28,128c16,0,28-16,56-16s40,16,56,16,40-16,56-16,40,16,56,16"/><path d="M28,192c16,0,28-16,56-16s40,16,56,16,40-16,56-16,40,16,56,16"/></svg></div>
+          <div class="process-step-label">Leaf Washing</div>
+        </div>
+        <div class="process-step reveal delay-2">
+          <div class="process-step-num">03</div>
+          <div class="process-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M208,144a80,80,0,1,1-160,0C48,96,128,24,128,24S208,96,208,144Z"/></svg></div>
+          <div class="process-step-label">Gel Extraction</div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step-num">04</div>
+          <div class="process-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><circle cx="128" cy="128" r="40"/><path d="M130.05,28a104.06,104.06,0,0,1,19.42,3.39l9.5,16.45a88.47,88.47,0,0,1,13.83,8l19-1.78a104,104,0,0,1,9.73,16.87L194,87.5a89.57,89.57,0,0,1,4,15.86l15.73,11.25a104.42,104.42,0,0,1,0,26.84L198,152.64a89.57,89.57,0,0,1-4,15.86l7.51,16.45a104,104,0,0,1-9.73,16.87l-19-1.78a88.47,88.47,0,0,1-13.83,8l-9.5,16.45a104.34,104.34,0,0,1-26.84,0l-9.5-16.45a88.47,88.47,0,0,1-13.83-8l-19,1.78a104,104,0,0,1-9.73-16.87L94,168.5a89.57,89.57,0,0,1-4-15.86L74.27,141.39a104.42,104.42,0,0,1,0-26.84L90,103.3a89.57,89.57,0,0,1,4-15.86L86.49,71a104,104,0,0,1,9.73-16.87l19,1.78a88.47,88.47,0,0,1,13.83-8l9.5-16.45A104.06,104.06,0,0,1,130.05,28Z"/></svg></div>
+          <div class="process-step-label">Gel Processing</div>
+        </div>
+        <div class="process-step reveal delay-1">
+          <div class="process-step-num">05</div>
+          <div class="process-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><polyline points="184,104 184,48 128,48"/><path d="M48,128A80,80,0,1,1,184,71"/><polyline points="72,152 72,208 128,208"/><path d="M208,128A80,80,0,0,1,72,185"/></svg></div>
+          <div class="process-step-label">Centrifugation</div>
+        </div>
+        <div class="process-step reveal delay-2">
+          <div class="process-step-num">06</div>
+          <div class="process-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M40,72H216L152,152v56l-48-24V152Z"/></svg></div>
+          <div class="process-step-label">Gel Grinding</div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step-num">07</div>
+          <div class="process-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><circle cx="112" cy="112" r="80"/><line x1="168.57" y1="168.57" x2="224" y2="224"/></svg></div>
+          <div class="process-step-label">Quality Checks</div>
+        </div>
+        <div class="process-step reveal delay-1">
+          <div class="process-step-num">08</div>
+          <div class="process-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M152,145.06V56a24,24,0,0,0-48,0v89.06a40,40,0,1,0,48,0Z"/><line x1="128" y1="80" x2="152" y2="80"/><line x1="128" y1="104" x2="152" y2="104"/><line x1="128" y1="128" x2="152" y2="128"/></svg></div>
+          <div class="process-step-label">Controlled Drying</div>
+        </div>
+        <div class="process-step reveal delay-2">
+          <div class="process-step-num">09</div>
+          <div class="process-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M48,80V56a8,8,0,0,1,8-8H80"/><path d="M176,48h24a8,8,0,0,1,8,8V80"/><path d="M208,176v24a8,8,0,0,1-8,8H176"/><path d="M80,208H56a8,8,0,0,1-8-8V176"/><line x1="32" y1="128" x2="224" y2="128"/></svg></div>
+          <div class="process-step-label">Metal Detection</div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step-num">10</div>
+          <div class="process-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><line x1="32" y1="216" x2="224" y2="216"/><rect x="56" y="96" width="48" height="120"/><rect x="152" y="56" width="48" height="160"/></svg></div>
+          <div class="process-step-label">Quality Analysis</div>
+        </div>
+        <div class="process-step reveal delay-1">
+          <div class="process-step-num">11</div>
+          <div class="process-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="none" stroke="#1B5C35" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M224,177.32V78.68a8,8,0,0,0-4.07-6.95l-88-48a8,8,0,0,0-7.86,0l-88,48A8,8,0,0,0,32,78.68V177.32a8,8,0,0,0,4.07,6.95l88,48a8,8,0,0,0,7.86,0l88-48A8,8,0,0,0,224,177.32Z"/><polyline points="32,80 128,136 224,80"/><line x1="128" y1="136" x2="128" y2="240"/><polyline points="80,56 176,104"/></svg></div>
+          <div class="process-step-label">Final Packaging</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section">
+    <span class="section-label">Sorelle</span>
+    <h2 data-i18n="cta.headline">Ready to Elevate Your Formulation?</h2>
+    <p data-i18n="cta.subtext">Request a free sample and our technical team will contact you within 24 hours.</p>
+    <a href="contact.html" class="btn btn-primary" data-i18n="cta.button">Request a Sample</a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="sorelle-logo.png" alt="Sorelle">
+            <span class="footer-logo-name">Sorelle</span>
+          </div>
+          <p class="footer-tagline">Premium Aloe Vera Raw Materials<br>Bahia, Brazil → World</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Navigation</h4>
+          <div class="footer-links-grid">
+            <a href="index.html" data-i18n="nav.home">Home</a>
+            <a href="about.html" data-i18n="nav.about">About</a>
+            <a href="products.html" data-i18n="nav.products">Products</a>
+            <a href="contact.html" data-i18n="nav.contact">Contact</a>
+          </div>
+        </div>
+        <div class="footer-right">
+          <h4>Certifications</h4>
+          <div class="footer-cert-badges">
+            <span class="footer-cert-badge">USDA Organic</span>
+            <span class="footer-cert-badge">EcoCert</span>
+            <span class="footer-cert-badge">EU Organic</span>
+            <span class="footer-cert-badge">Primus GFS</span>
+          </div>
+          <div class="footer-lang">
+            <button class="lang-btn" data-lang="EN">EN</button>
+            <button class="lang-btn" data-lang="IT">IT</button>
+            <button class="lang-btn" data-lang="PT">PT</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy" data-i18n="footer.copyright">© 2026 Sorelle. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script src="sorelle.js"></script>
+<script>
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('revealed'); revealObserver.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+
+<style>
+.reveal { opacity:0; transform:translateY(20px); transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+.reveal.delay-1 { transition-delay:0.1s; }
+.reveal.delay-2 { transition-delay:0.2s; }
+.reveal.revealed { opacity:1; transform:translateY(0); }
+</style>
+
+</body>
+</html>
