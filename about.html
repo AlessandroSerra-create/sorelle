@@ -224,8 +224,8 @@
           if (typeof L === 'undefined') { setTimeout(initMap, 80); return; }
 
           const map = L.map('brazilMap', {
-            center: [-14.0, -51.0],
-            zoom: 4,
+            center: [-18.0, -44.0],
+            zoom: 5,
             scrollWheelZoom: false,
             zoomControl: true,
             attributionControl: true
@@ -253,12 +253,12 @@
             });
           }
 
-          // Pin 1 — Pilar, Bahia
-          L.marker([-10.7331, -37.0541], { icon: greenPin() })
+          // Pin 1 — Jaguarari, Bahia
+          L.marker([-10.2667, -40.2000], { icon: greenPin() })
             .addTo(map)
             .bindPopup(`
               <div style="font-family:'Montserrat',sans-serif; min-width:180px;">
-                <strong style="font-size:0.82rem; color:#1B5C35; display:block; margin-bottom:4px;">Pilar, Bahia</strong>
+                <strong style="font-size:0.82rem; color:#1B5C35; display:block; margin-bottom:4px;">Jaguarari, Bahia</strong>
                 <span style="font-size:0.75rem; color:#6B7280; line-height:1.5;">
                   Aloe vera cultivation &amp; extraction — 380 hectares
                 </span>
