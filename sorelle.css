@@ -1488,7 +1488,32 @@ footer {
   .section-full { padding: 64px 20px; }
   .stats-section { padding: 60px 20px; }
   .video-section { padding: 64px 20px; }
-  .brand-intro { padding: 64px 20px; }
+  .brand-intro { padding: 60px 24px !important; }
+  .brand-intro-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 40px !important;
+  }
+  .brand-intro-inner > div:first-child {
+    order: 1;
+    width: 100%;
+  }
+  .brand-numbers {
+    order: 2;
+    width: 100%;
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 40px !important;
+  }
+  .brand-num-item { text-align: center !important; }
+  .brand-headline {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+    line-height: 1.1 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+  }
   .rnd-section { padding: 64px 20px; }
   .hero-static { padding: 120px 20px 60px; }
   .cta-section { padding: 64px 20px; }

@@ -461,15 +461,9 @@
     const imgRatio = img.naturalWidth / img.naturalHeight;
     const cvRatio  = cw / ch;
     let drawW, drawH;
-    if (window.innerWidth > 768) {
-      if (cvRatio > imgRatio) { drawW = cw; drawH = cw / imgRatio; }
-      else                    { drawH = ch; drawW = ch * imgRatio; }
-    } else {
-      // Mobile: pure cover-fit (fill height, crop sides if needed)
-      const scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
-      drawW = img.naturalWidth * scale;
-      drawH = img.naturalHeight * scale;
-    }
+    // Cover-fit: identical on all screen sizes
+    if (cvRatio > imgRatio) { drawW = cw; drawH = cw / imgRatio; }
+    else                    { drawH = ch; drawW = ch * imgRatio; }
     ctx.drawImage(img, (cw - drawW) / 2, (ch - drawH) / 2, drawW, drawH);
   }
 

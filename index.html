@@ -330,10 +330,12 @@
   'use strict';
 
   /* ---- Tuning constants ---- */
-  const VELOCITY_MULTIPLIER = 2.5;   // lookahead multiplier on fast scroll
-  const SNAP_ZONE           = 0.04;  // ±4% progress triggers snap
-  const HOLD_DURATION       = 700;   // ms to hold at snap point
-  const LERP_FACTOR         = 0.12;  // frame smoothing (0=frozen, 1=instant)
+  const isMobile            = window.innerWidth <= 768;
+  const VELOCITY_MULTIPLIER = isMobile ? 1.5  : 2.5;   // lookahead multiplier
+  const SNAP_ZONE           = 0.04;                      // ±4% progress triggers snap
+  const HOLD_DURATION       = 700;                       // ms to hold at snap point
+  const LERP_FACTOR         = isMobile ? 0.25 : 0.12;  // frame smoothing
+  const SNAP_ENABLED        = !isMobile;                 // disable snap on mobile
 
   /* ---- DOM refs ---- */
   const canvas     = document.getElementById('heroCanvas');
@@ -346,8 +348,8 @@
   const cards      = Array.from(document.querySelectorAll('#heroOverlay .annotation-card'));
 
   /* ---- Frame state ---- */
-  const FRAME_COUNT = 61;
-  const FRAME_DIR   = 'frames-hero/';
+  const FRAME_COUNT = isMobile ? 40 : 61;
+  const FRAME_DIR   = isMobile ? 'frames-hero-mobile/' : 'frames-hero/';
   const frames      = [];
   let loadedCount   = 0;
   let allLoaded     = false;
@@ -423,6 +425,7 @@
     drawFrame(0); drawnFrame = 0;
     loaderEl.style.opacity = '0';
     setTimeout(() => { loaderEl.style.display = 'none'; }, 650);
+    if (isMobile) document.body.style.overflow = '';
   }
 
   /* ---- Scroll handler: updates velocity-based targetFrame ---- */
@@ -464,17 +467,19 @@
       const hide = parseFloat(card.dataset.hide);
       card.classList.toggle('visible', progress >= show && progress <= hide);
 
-      // Snap: only when scrolling DOWN and entering the zone for the first time
-      const scrollingDown = scrollDelta > 0;
-      if (!snappedSet.has(i) && !snapActive && scrollingDown &&
-          progress >= show && progress < show + SNAP_ZONE) {
-        snappedSet.add(i);
-        snapActive      = true;
-        snapTargetY     = Math.round(section.offsetTop + show * scrollable);
-        snapReleaseTime = Date.now() + HOLD_DURATION;
+      if (SNAP_ENABLED) {
+        // Snap: only when scrolling DOWN and entering the zone for the first time
+        const scrollingDown = scrollDelta > 0;
+        if (!snappedSet.has(i) && !snapActive && scrollingDown &&
+            progress >= show && progress < show + SNAP_ZONE) {
+          snappedSet.add(i);
+          snapActive      = true;
+          snapTargetY     = Math.round(section.offsetTop + show * scrollable);
+          snapReleaseTime = Date.now() + HOLD_DURATION;
+        }
+        // Reset: allow re-snap after scrolling back below the snap point
+        if (progress < show - SNAP_ZONE) snappedSet.delete(i);
       }
-      // Reset: allow re-snap after scrolling back below the snap point
-      if (progress < show - SNAP_ZONE) snappedSet.delete(i);
     });
 
   }, { passive: true });
@@ -491,7 +496,7 @@
       }
 
       // Hold snap position via window.scrollTo()
-      if (snapActive) {
+      if (SNAP_ENABLED && snapActive) {
         if (Date.now() < snapReleaseTime) {
           window.scrollTo(0, snapTargetY);
         } else {
@@ -512,6 +517,7 @@
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
   /* ---- Kick off ---- */
+  if (isMobile) document.body.style.overflow = 'hidden';
   preloadFrames();
 
 })();
