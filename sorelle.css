@@ -380,7 +380,10 @@ p {
 }
 
 @media (max-width: 1024px) { .scroll-animation { height: 300vh; } }
-@media (max-width: 768px)  { .scroll-animation { height: 250vh; } }
+@media (max-width: 768px) {
+  .scroll-animation { height: 250vh; }
+  #heroCanvas, #aboutCanvas { width: 100vw !important; height: 100vh !important; }
+}
 
 /* --- Annotation Cards — Glass style --- */
 .annotation-card {
@@ -1479,7 +1482,8 @@ footer {
   #navbar { padding: 8px 0; }
   .nav-inner { padding: 10px 20px; }
   .nav-links { display: none; }
-  .nav-hamburger { display: flex; }
+  .nav-cta { display: none !important; }
+  .nav-hamburger { display: flex; margin-right: 16px; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
   .section-padded { padding: 64px 20px; }
   .section-full { padding: 64px 20px; }
   .stats-section { padding: 60px 20px; }

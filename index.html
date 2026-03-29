@@ -396,10 +396,10 @@
       if (cvRatio > imgRatio) { drawW = cw; drawH = cw / imgRatio; }
       else                    { drawH = ch; drawW = ch * imgRatio; }
     } else {
-      // Mobile: zoomed contain-fit
-      const zoom = 1.15;
-      if (cvRatio > imgRatio) { drawH = ch * zoom; drawW = drawH * imgRatio; }
-      else                    { drawW = cw * zoom; drawH = drawW / imgRatio; }
+      // Mobile: pure cover-fit (fill height, crop sides if needed)
+      const scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
+      drawW = img.naturalWidth * scale;
+      drawH = img.naturalHeight * scale;
     }
     ctx.drawImage(img, (cw - drawW) / 2, (ch - drawH) / 2, drawW, drawH);
   }
